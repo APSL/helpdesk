@@ -348,6 +348,7 @@
                                         widget="kanban_activity"
                                         related="activity_state"
                                     />
+                                    <field name="id" widget="open_tab" />
                                 </div>
                                 <div class="oe_kanban_bottom_right">
                                     <field

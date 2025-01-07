@@ -234,6 +234,10 @@ Contributors
 
   * Houzéfa Abbasbhay
 
+* `APSL-Nagarro <https://apsl.tech>`_:
+
+  * Antoni Marroig <amarroig@apsl.net>
+
 Maintainers
 ~~~~~~~~~~~
 

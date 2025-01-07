@@ -46,3 +46,7 @@
 * `XCG Consulting <https://xcg-consulting.fr>`_:
 
   * Houzéfa Abbasbhay
+
+* `APSL-Nagarro <https://apsl.tech>`_:
+
+  * Antoni Marroig <amarroig@apsl.net>
