@@ -203,13 +203,35 @@ class TestHelpdeskTicket(TestHelpdeskTicketBase):
         )
         self.assertIn("closed", ticket_good_reception.subject)
 
-    def test_create_ticket_from_alias_mail(self):
-        server = self.env["fetchmail.server"].create(
-            {
-                "name": "Demo server",
-                "server_type": "pop",
-                "server": "pop3.example.com",
-            }
+    def test_ticket_auto_assign(self):
+        self.company.helpdesk_mgmt_ticket_auto_assign = True
+        ticket_a = (
+            self.env["helpdesk.ticket"]
+            .with_user(self.user_own)
+            .create(
+                {
+                    "name": "New Ticket A",
+                    "description": "Description",
+                }
+            )
+        )
+        self.assertEqual(ticket_a.user_id, self.user_own)
+        self.company.helpdesk_mgmt_ticket_auto_assign = False
+        ticket_b = (
+            self.env["helpdesk.ticket"]
+            .with_user(self.user_team)
+            .create(
+                {
+                    "name": "New Ticket B",
+                    "description": "Description",
+                }
+            )
+        )
+        self.assertFalse(ticket_b.user_id)
+
+    def test_ticket_change_user_no_stage_reset(self):
+        in_progress_stage = self.env.ref(
+            "helpdesk_mgmt.helpdesk_ticket_stage_in_progress"
         )
         self.env["mail.alias"].create(
             {

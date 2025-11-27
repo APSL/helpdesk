@@ -18,3 +18,7 @@ class Company(models.Model):
         string="Required Category field in Helpdesk portal",
         default=True,
     )
+    helpdesk_mgmt_ticket_auto_assign = fields.Boolean(
+        string="Auto assign tickets",
+        default=True,
+    )
