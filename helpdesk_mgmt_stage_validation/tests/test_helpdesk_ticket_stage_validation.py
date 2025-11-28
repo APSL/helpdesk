@@ -13,6 +13,7 @@ class TestHelpdeskStageValidation(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.env = cls.env["base"].with_context(**DISABLED_MAIL_CONTEXT).env
+        cls.env.company.helpdesk_mgmt_ticket_auto_assign = False
         cls.stage = cls.env["helpdesk.ticket.stage"]
         cls.helpdesk_ticket = cls.env["helpdesk.ticket"]
         cls.ir_model_fields = cls.env["ir.model.fields"]
